@@ -27,6 +27,8 @@ namespace WebApi.OtherClasses.proj2
             }
         }
 
+        
+
         public List<string> Walk() {
             List<string> list = new List<string>();
             foreach(var x in pq) {
@@ -34,7 +36,6 @@ namespace WebApi.OtherClasses.proj2
                     list.Add(y);
                 }
             }
-
             return list;
         }
          

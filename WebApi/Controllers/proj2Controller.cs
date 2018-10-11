@@ -46,23 +46,32 @@ namespace WebApi.Controllers
                 else
                 {
                     // Main code goes Here'
+                    //Create an instance of Priority Queue
                     PriorityQueue pq = new PriorityQueue();
+
+                    // Json serializer settings
                     var settings = new JsonSerializerSettings
                     {
                         MissingMemberHandling = MissingMemberHandling.Error
                     };
 
-                    //return Ok("k");
-
                     try {
+
                         var myObject = JsonConvert.DeserializeObject<ListIn>(jsonstring, settings);
                         var inlist = myObject.InList;
-                        string[] arrst = new string[10];
-                        int pooo = 0;
+
                         foreach (var item in inlist) {
-                            //var subObjects = JsonConvert.DeserializeObject<Queue>(item.ToString(), settings);
-                            arrst[pooo] = item.cmd;
-                            pooo++;
+                            switch (item.cmd.ToLower()) {
+                                case "enqueue":
+                                    pq.Enqueue(int.Parse(item.pri), item.name);
+                                    break;
+                                case "dequeue":
+                                    pq.Dequeue();
+                                    break;
+                                default:
+                                    return Ok(String.Format("No such command named: {0}", item.cmd));
+
+                            }
                         }
                         return Ok(arrst);
                     }
