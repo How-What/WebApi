@@ -183,10 +183,23 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\proj0Controller.cs" />
+    <Compile Include="Controllers\proj1Controller.cs" />
+    <Compile Include="Controllers\proj2Controller.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\proj0\Person.cs" />
+    <Compile Include="Models\proj0\Pet.cs" />
+    <Compile Include="Models\proj0\Student.cs" />
+    <Compile Include="Models\JsonString.cs" />
+    <Compile Include="Models\proj1\ListIn.cs" />
+    <Compile Include="Models\proj1\SortedList.cs" />
+    <Compile Include="Models\proj2\ListIn.cs" />
+    <Compile Include="Models\proj2\Queue.cs" />
+    <Compile Include="OtherClasses\proj1\InsSort.cs" />
+    <Compile Include="OtherClasses\proj2\PriorityQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -243,7 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

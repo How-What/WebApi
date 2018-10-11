@@ -1,0 +1,5 @@
+If you want the other things for project one it's in 
+
+Everything/WebApi/Contollers/proj1.cs
+
+Everything is done in Visual Studio 2017, C#
