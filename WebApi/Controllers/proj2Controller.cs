@@ -73,7 +73,7 @@ namespace WebApi.Controllers
 
                             }
                         }
-                        return Ok(arrst);
+                        return Ok(pq.Walk);
                     }
                     catch {
                         return Ok("Error: Malforned Json");

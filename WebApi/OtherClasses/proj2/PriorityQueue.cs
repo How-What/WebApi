@@ -11,12 +11,11 @@ namespace WebApi.OtherClasses.proj2
          * Since it can't accept duplicate keys (how the set get sorted)
          * going to add a queue to that list that way if there is the same priority 
          * it adds it to the list
-         * 
-         * 
          */
 
         private SortedDictionary<int, Queue<string>> pq = new SortedDictionary<int, Queue<string>>();
 
+        //Enqueue Method
         public void Enqueue(int priority, string item) {
             try {
                 pq.Add(priority, new Queue<string>());
@@ -27,8 +26,18 @@ namespace WebApi.OtherClasses.proj2
             }
         }
 
-        
+        //Dequeue Method;
+        public SortedDictionary<int,Queue<string>> Dequeue() {
+            if(pq.First().Value.Count() > 1) {
+                pq.First().Value.Dequeue();
+            }
+            else {
+                pq.Remove(pq.First().Key);
+            }
+            return pq;
+        }
 
+        //goes (walks) through the list
         public List<string> Walk() {
             List<string> list = new List<string>();
             foreach(var x in pq) {
