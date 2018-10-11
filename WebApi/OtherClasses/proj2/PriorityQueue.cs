@@ -14,6 +14,29 @@ namespace WebApi.OtherClasses.proj2
          * 
          * 
          */
+
+        private SortedDictionary<int, Queue<string>> pq = new SortedDictionary<int, Queue<string>>();
+
+        public void Enqueue(int priority, string item) {
+            try {
+                pq.Add(priority, new Queue<string>());
+                pq[priority].Enqueue(item);
+            }
+            catch {
+                pq[priority].Enqueue(item);
+            }
+        }
+
+        public List<string> Walk() {
+            List<string> list = new List<string>();
+            foreach(var x in pq) {
+                foreach ( var y in x.Value) {
+                    list.Add(y);
+                }
+            }
+
+            return list;
+        }
          
     }
 }

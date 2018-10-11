@@ -10,6 +10,7 @@ using System.Timers;
 using System.Web.Http;
 using WebApi.Models.proj2;
 using WebApi.OtherClasses.proj2;
+using Queue = WebApi.Models.proj2.Queue;
 
 namespace WebApi.Controllers
 {
@@ -45,27 +46,25 @@ namespace WebApi.Controllers
                 else
                 {
                     // Main code goes Here'
+                    PriorityQueue pq = new PriorityQueue();
                     var settings = new JsonSerializerSettings
                     {
                         MissingMemberHandling = MissingMemberHandling.Error
                     };
 
-                    return Ok("k");
+                    //return Ok("k");
 
-                    //try
-                    //{
-                    //    var myObject = JsonConvert.DeserializeObject<ListIn>(jsonstring, settings);
-                    //    var inlist = myObject.InList;
-                    //    foreach (var item in inlist)
-                    //    {
-                    //        Console.Write(item);
-                    //    }
-                    //    return Ok("Hello");
-                    //}
-                    //catch
-                    //{
-                    //    return Ok("Error: Malforned Json");
-                    //}
+                    try {
+                        var myObject = JsonConvert.DeserializeObject<ListIn>(jsonstring, settings);
+                        var inlist = myObject.InList;
+                        foreach (var item in inlist) {
+                            var subObjects = JsonConvert.DeserializeObject<Queue>(item.ToString(), settings);
+                        }
+                        return Ok("Hello");
+                    }
+                    catch {
+                        return Ok("Error: Malforned Json");
+                    }
                 }
             }
             else
