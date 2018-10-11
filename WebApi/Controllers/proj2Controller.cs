@@ -57,10 +57,14 @@ namespace WebApi.Controllers
                     try {
                         var myObject = JsonConvert.DeserializeObject<ListIn>(jsonstring, settings);
                         var inlist = myObject.InList;
+                        string[] arrst = new string[10];
+                        int pooo = 0;
                         foreach (var item in inlist) {
-                            var subObjects = JsonConvert.DeserializeObject<Queue>(item.ToString(), settings);
+                            //var subObjects = JsonConvert.DeserializeObject<Queue>(item.ToString(), settings);
+                            arrst[pooo] = item.cmd;
+                            pooo++;
                         }
-                        return Ok("Hello");
+                        return Ok(arrst);
                     }
                     catch {
                         return Ok("Error: Malforned Json");
