@@ -26,15 +26,20 @@ namespace WebApi.OtherClasses.proj2
             }
         }
 
-        //Dequeue Method;
+        //Dequeue Method
         public SortedDictionary<int,Queue<string>> Dequeue() {
-            if(pq.First().Value.Count() > 1) {
-                pq.First().Value.Dequeue();
+            if(pq.Count == 0) {
+                return pq;
             }
             else {
-                pq.Remove(pq.First().Key);
+                if (pq.First().Value.Count() > 1) {
+                    pq.First().Value.Dequeue();
+                }
+                else {
+                    pq.Remove(pq.First().Key);
+                }
+                return pq;
             }
-            return pq;
         }
 
         //goes (walks) through the list

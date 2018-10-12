@@ -197,6 +197,7 @@
     <Compile Include="Models\proj1\ListIn.cs" />
     <Compile Include="Models\proj1\SortedList.cs" />
     <Compile Include="Models\proj2\ListIn.cs" />
+    <Compile Include="Models\proj2\ListOut.cs" />
     <Compile Include="Models\proj2\Queue.cs" />
     <Compile Include="OtherClasses\proj1\InsSort.cs" />
     <Compile Include="OtherClasses\proj2\PriorityQueue.cs" />

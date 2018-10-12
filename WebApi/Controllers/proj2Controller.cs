@@ -20,13 +20,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IHttpActionResult Index()
         {
-            SortedDictionary<int, string> dictionary = new SortedDictionary<int, string>();
-            dictionary.Add(12, "qew");
-            dictionary.Add(1, "LOL");
-            dictionary.Add(12, "qew");
-            dictionary.Add(3, "pew");
-            return Ok(dictionary);
-            //return Ok("Wallace Wong, Programming Project 2"); //Returns response 200: Ok
+            return Ok("Wallace Wong, Programming Project 2"); //Returns response 200: Ok
         }
 
         // POST: /proj2
@@ -45,7 +39,7 @@ namespace WebApi.Controllers
                 }
                 else
                 {
-                    // Main code goes Here'
+                    /* Main code goes Here*/
                     //Create an instance of Priority Queue
                     PriorityQueue pq = new PriorityQueue();
 
@@ -60,6 +54,7 @@ namespace WebApi.Controllers
                         var myObject = JsonConvert.DeserializeObject<ListIn>(jsonstring, settings);
                         var inlist = myObject.InList;
 
+                        //cmd cases assumes there are ony enqueue and dequeue
                         foreach (var item in inlist) {
                             switch (item.cmd.ToLower()) {
                                 case "enqueue":
@@ -73,7 +68,13 @@ namespace WebApi.Controllers
 
                             }
                         }
-                        return Ok(pq.Walk);
+
+                        //return in json format;
+                        ListOut outlist = new ListOut
+                        {
+                            OutList = pq.Walk().ToArray()
+                        };
+                        return Ok(outlist);
                     }
                     catch {
                         return Ok("Error: Malforned Json");
